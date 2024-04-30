@@ -1,0 +1,31 @@
+in this patch:
+PLANETARY_RESOURCE:NEEDS[CommunityResourcePack]
+{
+	ResourceName = LqdHe3
+	ResourceType = 3
+	PlanetName = Jool
+	
+	Distribution
+	{
+		PresenceChance = 1000
+		MinAbundance = 0.2
+		MaxAbundance = 0.45
+		MinAltitude = 0.8
+		MaxAltitude = 10
+		MinRange = 0.5
+		MaxRange = 0.5
+	}
+}
+
+ResourceType's values are as following: 0 (Crustal), 1 (Oceanic), 2 (Atmospheric), 3 (Exospheric). Only the number is a valid input.
+
+ResourceName can be anything as long as it's a valid resource defined in the Community Resource Pack or in any mod that adds its own exclusive resource. For every additional resource you want to make available for one planet you must make a new instance of the whole PLANETARY_RESOURCE configNode and change the ResourceName value.
+
+PlanetName means: "This configuration is for this planet." For every planet you want to personalize the resource band for you must make a new instance of the whole PLANETARY_RESOURCE configNode and change the PlanetName value.
+
+MinAbundance and MaxAbundance are abstract. The RNG picks a number between these two (which can have the same value if you want it not to vary). The picked number, (per save) is the maximum that you can hope to encounter with a scanner. It's the amount that you get at the thickest point, the midpoint in the exosphere.
+
+MinAltitude and MaxAltitude are where Math gets challenging. The RNG picks between these, per save. The numbers you put here are calculated as (x * half planet radius) + planet radius and are measured in km from the planet's center (SemimajorAxis), not actually km from sea level (altitude).
+These values are what decide the height of the midpoint of the exosphere.
+
+MinRange and MaxRange are easy. The RNG picks between these, per save. The numbers here multiply by the planet radius in km for the height of the exosphere around the mid-point of the exosphere, half above and half below.
