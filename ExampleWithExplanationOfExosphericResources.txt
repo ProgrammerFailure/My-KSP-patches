@@ -1,0 +1,30 @@
+
+//Exoatmospheric
+//The magnetospheres of some worlds have trapped Graviolium. A dust collector can obtain small amounts of the stuff at a time.
+//PLANETARY_RESOURCE:NEEDS[!WildBlueIndustries/FlyingSaucers]
+//{
+//	ResourceName = Graviolium
+//	ResourceType = 3
+//	PlanetName = Kerbin
+//	Tag = KerbinGrav3
+//	Distribution
+//	{
+//		PresenceChance = 100
+//		MinAbundance = 0.01
+//		MaxAbundance = 0.02 
+//		MinAltitude = 0.0234 
+//		MaxAltitude = 2
+            //The RNG picks between these, per save. The numbers you put here are calculated as (x * half planet radius) + planet radius and are measured in km from the planet's center (SemimajorAxis), not actually km from sea level (altitude).
+            //These values are what decide the height of the midpoint of the exosphere.
+            //In this example, the middle of the exosphere is either: (0.02*0.5*kerbin radius[600 000m])+kerbin radius[600000m]
+            //OR (2*0.5*kerbin radius[600000m])+kerbin radius[600000m]
+            //This means either 606000 or 1200000 for the middle of the band
+		//MinRange = 0.5
+		//MaxRange = 0.5
+            //MinRange and MaxRange are easy. The RNG picks between these, per save. 
+            //The numbers here multiply by the planet radius in km 
+            //for the height of the exosphere around the mid-point of the exosphere, half above and half below.
+            //In this case, minRange=maxRange, so height of exosphere is 600000*0.5 = 300000
+		//Variance = 0
+	//}
+//}
