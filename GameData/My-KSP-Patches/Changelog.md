@@ -1,0 +1,1 @@
+Adds a changelog file and support for KSP AVC
